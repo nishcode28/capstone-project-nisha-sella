@@ -13,9 +13,9 @@ import matplotlib.ticker as ticker
 from clean_and_eda import return_by_payment, monthly_total_no_outliers
 
 os.makedirs("visualizations", exist_ok=True)
+#1.return_rate_by_payment
 
 return_by_payment = return_by_payment.sort_values(by='mean', ascending=False)
-
 colors=[]
 for payment_method in return_by_payment.index:
   if payment_method=='COD':
@@ -37,11 +37,12 @@ plt.tight_layout()
 plt.savefig('visualizations/return_rate_by_payment.png', bbox_inches='tight')
 plt.close()
 
+#monthly_revenue_trend
+
 monthly_total_no_outliers = monthly_total_no_outliers.sort_values('month')
 
 month_map = {1: 'Jan', 2: 'Feb', 3: 'March', 4: 'April', 5: 'May', 6: 'June'}
 monthly_total_no_outliers['month_name'] = monthly_total_no_outliers['month'].map(month_map)
-
 
 fig, ax = plt.subplots(figsize=(9, 5))
 
@@ -52,7 +53,6 @@ ax.plot(
     color='#1f77b4',
     linewidth=2
 )
-
 
 ax.set_title("March is the actual peak revenue month", fontsize=12, fontweight='bold')
 ax.set_xlabel("Month",fontweight='bold', labelpad=10)
