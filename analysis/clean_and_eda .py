@@ -176,6 +176,8 @@ time_series_insight = (
 )
 print(time_series_insight)
 
+
+# extra calculations for json file generation
 peak_row = monthly_total_no_outliers.loc[monthly_total_no_outliers['order_value'].idxmax()]
 
 month_num = int(peak_row['month'])
@@ -209,11 +211,12 @@ outlier_inflated_month = {
 
 print(f"outlier_inflated_month: {outlier_inflated_month}")
 
+
 #part 3: task1
+# creation of JSON file
 
 
 import json
-
 
 summary_results = {
     "cleaned_total_revenue_inr": float(round(clean_total_order_value, 2)),
@@ -227,7 +230,6 @@ summary_results = {
     "true_peak_month": true_peak_month,
     "outlier_inflated_month": outlier_inflated_month
 }
-
 
 json_output_path = "findings.json"  # or "summary_metrics.json"
 
